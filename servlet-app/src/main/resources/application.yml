@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: servlet-app
+server:
+  port: 8082
