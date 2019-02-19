@@ -13,8 +13,13 @@ class ReactiveAppRouter {
 
     @Bean
     fun routerFunction(): RouterFunction<ServerResponse> = router {
-        GET("/") { req ->
+        GET("/slow") { req ->
+            log.info("/slow")
             get(req)
+        }
+        GET("/normal") { _ ->
+            log.info("/normal")
+            ServerResponse.ok().body(Mono.just(Response("OK!")))
         }
     }
 
