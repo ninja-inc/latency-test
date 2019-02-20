@@ -13,7 +13,7 @@ class ServletAppController {
     fun slow(): Response {
         log.info("/slow")
 
-        return WebClient.create("http://localhost:8081/slowDownRandomly")
+        return WebClient.create("http://localhost:8081/slow")
                 .get()
                 .retrieve()
                 .bodyToMono(Response::class.java)
@@ -23,6 +23,8 @@ class ServletAppController {
     @GetMapping("/normal")
     fun normal(): Response {
         log.info("/normal")
+
+        Thread.sleep(200)
 
         return Response("ok!")
     }
